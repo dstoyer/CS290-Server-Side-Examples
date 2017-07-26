@@ -1,0 +1,20 @@
+<H1>{{requestDescription}}</H1>
+
+{{#if queryList}}
+<H2>Request Query:</H2>
+<ul>
+	{{#each queryList}}
+		<li>{{this.param}}: {{this.value}}
+	{{/each}}
+</ul>
+{{/if}}
+
+{{#if bodyList}}
+<H2>Request body:</H2>
+<ul>
+	{{#each bodyList}}
+		<li>{{this.param}}: {{this.value}}
+	{{/each}}
+</ul>
+{{/if}}
+

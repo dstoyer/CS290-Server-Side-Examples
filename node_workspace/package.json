@@ -9,10 +9,12 @@
   "author": "OSU",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.13.3",
+    "body-parser": "^1.17.2",
     "express": "^4.13.2",
     "express-handlebars": "^2.0.1",
-    "express-session": "^1.11.3",
+    "express-session": "^1.15.4",
+    "express-sessions": "^1.0.6",
+    "express-validator": "^3.2.1",
     "mysql": "^2.8.0"
   }
 }
