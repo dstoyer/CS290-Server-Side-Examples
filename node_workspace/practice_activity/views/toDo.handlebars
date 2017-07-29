@@ -9,22 +9,22 @@
   <input type="number" name="temp" id="toDoTemp"><br>
   <input type="submit" name="Add Item" value="Add Item">
 </form>
-{{#if toDo}}
+{{#if toDoList}}
 <ul>
-  {{#each toDo}}
-  <fieldset>
-  <li>
+  {{#each toDoList}}
+    <li style="background-color:{{getColor this.temp this.city}}">
+<!--  <li style="background-color:red"> -->
     <h3>{{this.name}}</h3>
     <ul>
     	<li>City: {{this.city}}</li>
-    	<li>Temp: {{this.temp}}</li>
+    	<li>City Temp: {{this.owmTemp}}</li>
+    	<li>Minimum ToDo Temp: {{this.temp}}</li>
     </ul>
     <form method="post">
       <input type="hidden" name="id" value="{{this.id}}">
-      <input type="submit" name="Done" value="Mark as Done">
+      <input type="submit" name="Done" value="Done">
     </form>
   </li>
-  </fieldset>
   {{/each}}
 </ul>
 {{/if}}

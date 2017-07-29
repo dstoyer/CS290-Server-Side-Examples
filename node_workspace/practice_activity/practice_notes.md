@@ -68,3 +68,10 @@ data on the server.
 + The input boxes in the forms are not aligned. This looks really bad. I would
   like to find out how to align the boxes, if I have time.
 
++ The biggest challenge here is thinking through how to set up the asynchronous
+  call to Open Weather.
+	+ Initially I'm trying to do the request like from the AJAX homework.
+	+ I've found that, while concepts are similar (asynchronous calls are
+	  needed), I need to use the Express/Handlebars way of doing things to make
+	  this work in the to-do app.
+

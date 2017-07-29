@@ -55,12 +55,20 @@ data on the server.
 	+ display the city name in the to-do list.
 	+ Should the city and temp be optional?
 		+ Need to think about how to handle "yes" or "no" to optional.
+
 1. Allow the user to add min temp.
 	+ input field for the temp.
 	+ display the temp in the to-do list.
+
+1. After getting the UI part down for city and temp, implement making the call
+   to Open Weather Map.
 
 ## Problems Encountered
 
 + The input boxes in the forms are not aligned. This looks really bad. I would
   like to find out how to align the boxes, if I have time.
+
++ The biggest challenge here is thinking through how to set up the asynchronous
+  call to Open Weather.
+	+ Initially I'm trying to do the request like from the AJAX homework.
 

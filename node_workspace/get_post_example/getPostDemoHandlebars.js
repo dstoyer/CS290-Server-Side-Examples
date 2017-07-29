@@ -8,7 +8,20 @@ var expressFunc = require('express');
 
 var expressApp = expressFunc();
 
-var handleBars = require('express-handlebars').create({defaultLayout:'main'});
+var handleBars = require('express-handlebars').create(
+{
+	defaultLayout:'main',
+	helpers: { // helper function to display a list of parameters
+		'list': function(items, options){
+		var output = "<ul>\n";
+		for (var i = 0, l = items.length; i < l; i++) {
+			output = output + "\t<li>" + options.fn(items[i]) + "</li>\n";
+		}
+		return output + "</ul>\n";
+		}
+	}
+});
+
 
 expressApp.engine('handlebars', handleBars.engine);
 // expressApp.set('view.engine', 'handlebars') allows us to omit the ".handlebars" extention from the render(...) function calls
@@ -44,7 +57,7 @@ expressApp.post('/data-page',function(req,res){
 	
 	var queryParams = [];
 	for (var q in req.query) {
-		queryParams.push({'param':q, 'value:':req.query[q]});
+		queryParams.push({'param':q, 'value':req.query[q]});
 	}
 	var context = {};
 	context.bodyList = bodyParams;
@@ -68,3 +81,4 @@ res.render('500');
 expressApp.listen(expressApp.get('port'), function(){
   console.log('Express started on http://localhost:' + expressApp.get('port') + '; press Ctrl-C to terminate.');
 });
+
