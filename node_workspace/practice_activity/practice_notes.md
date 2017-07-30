@@ -74,4 +74,16 @@ data on the server.
 	+ I've found that, while concepts are similar (asynchronous calls are
 	  needed), I need to use the Express/Handlebars way of doing things to make
 	  this work in the to-do app.
+	+ I've been circling around getting asynchronous calls to work properly.
+	  I've tried doing a request call in a helper function, but found that the
+page does not update with a new background color.
+	+ I think that I might have to change the script to make a GET call with the
+	  Open Weather request first, then do a POST to the page.
+		+ Further introspection has me convinced that it shouldn't make a
+		  difference whether the call to Open Weather is in a GET or POST
+function.
+	+ I have tried using node modules: async, then-request, sync-request (not
+	  good to use for client/server apps). I think I might have to go back to
+trying a hybrid of handlebars and a conventional ajax script for updating the
+css values.
 
