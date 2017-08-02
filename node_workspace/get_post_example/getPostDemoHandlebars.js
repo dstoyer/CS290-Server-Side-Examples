@@ -34,11 +34,11 @@ var bodyParser = require('body-parser');
 expressApp.use(bodyParser.urlencoded({extended: false}));
 expressApp.use(bodyParser.json());
 
-expressApp.post('/', function(req, res){
-	res.render('home'); // 
-});
+//expressApp.post('/', function(req, res){
+//	res.render('home'); // 
+//});
 
-expressApp.get('/data-page',function(req,res){
+expressApp.get('/',function(req,res){
 	var queryParams = [];
 	for (var p in req.query){
 		queryParams.push({'param':p,'value':req.query[p]})
@@ -49,7 +49,7 @@ expressApp.get('/data-page',function(req,res){
 	res.render('data-page', context);
 });
 
-expressApp.post('/data-page',function(req,res){
+expressApp.post('/',function(req,res){
 	var bodyParams = [];
 	for (var p in req.body){
 		bodyParams.push({'param':p,'value':req.body[p]});

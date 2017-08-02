@@ -11,15 +11,11 @@ var expressApp = expressFunc();
 var handleBars = require('express-handlebars').create({
 	defaultLayout : 'main',
 	helpers: {'getColor': function(minTemp, toDoTemp){
-//		console.log("getColor min temp: "+minTemp);
-//		console.log("getColor city temp: "+toDoTemp);
-//		console.log(body);
 		if (minTemp < toDoTemp) {
 			return 'green';
 		} else {
 			return 'red';
 		}
-
 	}}
 });
 
@@ -72,19 +68,11 @@ expressApp.post('/', function(req, res) {
 		res.render('newSession', context);
 		return;
 	}
-//	var toDo = {};
-//	toDo.name = req.body.name;
-//	toDo.city = req.body.city;
-//	toDo.temp = req.body.temp;
-//
-//	toDo.id   = req.session.curId;
 	if (req.body['Add Item']) {
 		request('http://api.openweathermap.org/data/2.5/weather?q='+req.body.city+'&units=imperial&APPID=aa224681db2a563756dd2041bc0eb5ca',
 				function(err, response, body) {
 					if (!err && response.statusCode < 400) {
 						var owmData = JSON.parse(body);
-//						console.log("temperature: "+owmData.main.temp);
-//						console.log(body);
 						req.session.toDoList.push({
 							"name" : req.body.name,
 							"city" : req.body.city,
@@ -129,9 +117,6 @@ expressApp.post('/', function(req, res) {
 	context.toDoList = req.session.toDoList;
 	console.log(context.toDoList);
 	res.render('toDo', context);
-	
-	// do the request to Open Weather and change the background color
-//	getCityTemperature(res, context);
 });
 
 expressApp.use(function(req, res) {
@@ -152,19 +137,13 @@ expressApp.listen(expressApp.get('port'), function() {
 });
 
 function getCityTemperature(res, city) {
-
-		
-//	var context = {};
 	request('http://api.openweathermap.org/data/2.5/weather?q='+city+'&units=imperial&APPID=aa224681db2a563756dd2041bc0eb5ca',
 		function(err, response, body) {
 			if (!err && response.statusCode < 400) {
 				var owmData = JSON.parse(body);
 				console.log("temperature: "+owmData.main.temp);
 				console.log(body);
-//				context.owmJSON = owmData;
-//				context.owm = body;
 				return owmData.main.temp
-//				res.render('toDo', context);
 			} else {
 				if (response) {
 					console.log(response.statusCode);
@@ -172,5 +151,4 @@ function getCityTemperature(res, city) {
 			next(err);
 		}
 	});
-
 }
